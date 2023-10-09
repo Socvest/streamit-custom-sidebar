@@ -20,7 +20,7 @@ from streamlit_custom_sidebar import CustomSidebarDefault
 import streamlit_float # recommended
 
 
-streamlit_float.float_init()
+streamlit_float.float_init(include_unstable_primary=False)
 
 data_ = [
             {"index":0, "label":"Example", "page":"example", "href":"http://localhost:8501/"},
@@ -38,7 +38,7 @@ with st.container():
     defaultSidebar.load_custom_sidebar()
     defaultSidebar.change_page()
     
-    streamlit_float.float_parent(css="top:-1000px;") # gets rid of the whitespace created from the iframes used to build the component - no big forehead.
+    streamlit_float.float_parent(css="display:fixed; top:-1000px;") # gets rid of the whitespace created from the iframes used to build the component - no big forehead.
 
 # The above must be rendered atop every streamlit page
 

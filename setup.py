@@ -5,9 +5,11 @@ import setuptools
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
+# row-widget stButton
+
 setuptools.setup(
     name="streamlit-custom-sidebar",
-    version="0.0.1",
+    version="0.0.12",
     author="Socvest",
     author_email="",
     description="Streamlit component that allows you to do create a more flexible customisable streamlit sidebar",

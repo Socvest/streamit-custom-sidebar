@@ -252,10 +252,17 @@ class CustomSidebarDefault:
                             const createEL = parent.document.createElement("section");
                             createEL.className = "custom-sidebar";
 
-                            pageName_ = window.top.document.head.querySelectorAll('title')[0].innerHTML.split("·")[0].trim();
-                            
-                            {self.storageChoice}.setItem("currentPage", JSON.stringify({{"currentPage":pageName_}}))
-                            
+                            if ("{self.loadPageName}" === "None"){{
+                                pageName_ = window.parent.document.location.pathname.split("/")
+                                pageName_ = pageName_[pageName_.length - 1]
+                                if (pageName_ === ""){{
+                                    pageName_to_save = {self.data}[0]["page"]
+                                    {self.storageChoice}.setItem("currentPage", JSON.stringify({{"currentPage":pageName_to_save}}))
+                                }} else {{
+                                    
+                                    {self.storageChoice}.setItem("currentPage", JSON.stringify({{"currentPage":pageName_}}))
+                                }}
+                                                             
                             createEL.style = "transition: width 300ms ease 0s, min-width 300ms ease 0s, max-width 300ms ease 0s, transform 300ms ease 0s; position:relative; height: 910px; box-sizing: border-box; flex-shrink:0; height:100vh; width:{width}; min-width:{min_width}; max-width:{max_width}; transform:{transform}; background-color:{self.backgroundColor}; color:white; z-index: 999991; padding:{padding};";
                             const body = window.parent.document.body.querySelectorAll('div[data-testid="stAppViewContainer"] > section[class*="main"]');
                             body[0].insertAdjacentElement('beforebegin',createEL);

@@ -1,0 +1,1 @@
+recursive-include streamlit_custom_sidebar/frontend/build *

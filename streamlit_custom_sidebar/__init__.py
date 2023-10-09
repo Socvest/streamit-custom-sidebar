@@ -228,7 +228,6 @@ class CustomSidebarDefault:
         Create the sidebar when the page first loads. Set to make sure it only creates once if it already exists. 
         """
 
-        # if self.serverRendering == False:
         if self.closeNavOnLoad:
             width = "0px"
             min_width = "0px"
@@ -242,10 +241,6 @@ class CustomSidebarDefault:
             transform = "none"
             padding="6rem 1rem"
         
-        # else:
-        #     sessionS = SessionStorage()
-        #     sessionS.getItem()
-
 
         js_el = f'''
 
@@ -257,7 +252,7 @@ class CustomSidebarDefault:
                             const createEL = parent.document.createElement("section");
                             createEL.className = "custom-sidebar";
 
-                            pageName_ = window.top.document.head.querySelectorAll('title')[0].innerHTML.split("·")[0].trim(); //window.parent.document.body.querySelectorAll('html > head > title')
+                            pageName_ = window.top.document.head.querySelectorAll('title')[0].innerHTML.split("·")[0].trim();
                             
                             {self.storageChoice}.setItem("currentPage", JSON.stringify({{"currentPage":pageName_}}))
                             
@@ -384,12 +379,6 @@ class CustomSidebarDefault:
                             parentElForNav.appendChild(listContainer)
                             
                             newSidebar[0].appendChild(parentElForNav);
-                            
-
-                            //const iframe = window.top.document.querySelectorAll('iframe[title="__init__.my_component"]')[0];  
-                            //iframe.parentNode.style = 'width:calc(100% - 20px); background-color:{self.backgroundColor};';
-                            //iframe.style = 'width:calc(100% - 20px); background-color:{self.backgroundColor};';
-                            //newSidebar[0].appendChild(iframe.parentNode)
 
                         }}
                     </script>
@@ -467,10 +456,6 @@ class CustomSidebarDefault:
                                 openNavBtn[0].addEventListener('mouseout', function() {{
                                         openNavBtn[0].style = "padding-left:5px; padding-right:5px; visibility:visible; color:black; z-index:999990; position:absolute; top:0.5rem; width:fit-content; left:0.5rem; font-size:18px; cursor:pointer;";
                                 }});
-
-                              //  if ("{self.serverRendering}" === "True"){{
-                                 //   sessionStorage.setItem("navigationStatus", JSON.stringify({{"navigationStatus": "closed"}}))
-                               // }}
                                 
                             }}
                             window.parent.document.querySelectorAll('.custom-sidebar-close-btn')[0].addEventListener("click", function(event) {{
@@ -496,10 +481,6 @@ class CustomSidebarDefault:
                                 const openNavBtn = window.parent.document.body.querySelectorAll('div[class="custom-sidebar-open-button"]');
                                 openNavBtn[0].style = "visibility:hidden;"; 
 
-                              //  if ("{self.serverRendering}" === "True"){{
-                               //     sessionStorage.setItem("navigationStatus", JSON.stringify({{"navigationStatus": "open"}}))
-                              //  }}
-                                
                             }}
                             window.parent.document.querySelectorAll('.custom-sidebar-open-button')[0].addEventListener("click", function(event) {{
                             
@@ -621,10 +602,7 @@ class CustomSidebarDefault:
         else:
             sessionS = SessionStorage()
             pageSelect = sessionS.getItem("currentPage")
-        # print("storage", currentPage, "session_storage", st.session_state["currentPage"])
-        # ["currentPage"]["page"]
-        # if "storage" in st.session_state and st.session_state["storage"] != None and st.session_state["currentPage"]["page"] != currentPage["storage"]["currentPage"]:
-            # st.write(currentPage["storage"])
+       
         if pageSelect != None and st.session_state["currentPage"]["page"] != pageSelect["storage"]["currentPage"]:
             switch_page(pageSelect["storage"]["currentPage"])
 

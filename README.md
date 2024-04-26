@@ -21,8 +21,8 @@ pip install streamlit-custom-sidebar
 create `.streamlit/config.toml` directory where the main app.py file is located
 
 in there, input 
-[ui]
-hideSidebarNav=true
+[client]
+showSidebarNavigation = false
 
 or 
 

@@ -24,10 +24,6 @@ in there, input
 [client]
 showSidebarNavigation = false
 
-or 
-
-start streamlit app with 
-`streamlit run app.py --ui.hideSidebarNav=true`
 ```
 
 ## Usage instructions
